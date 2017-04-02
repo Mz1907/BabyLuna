@@ -1,0 +1,77 @@
+services:                     
+    app.admin.product:
+        class: AdminBundle\Admin\ProductAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Gestion des produits", label: "Produits" }
+        arguments:
+            - ~
+            - RestaurantBundle\Entity\Product
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminBundle]]
+            
+    app.admin.productCategory:
+        class: AdminBundle\Admin\ProductCategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Gestion des produits", label: "Catégories des produits" }
+        arguments:
+            - ~
+            - RestaurantBundle\Entity\ProductCategory
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminBundle]]
+            
+    app.admin.productImage:
+        class: AdminBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Gestion des produits", label: "Images des produits" }
+        arguments:
+            - ~
+            - RestaurantBundle\Entity\Image
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminBundle]]
+            
+    app.admin.menu:
+        class: AdminBundle\Admin\MenuAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Gestion des menus", label: "Menus spéciaux" }
+        arguments:
+            - ~
+            - RestaurantBundle\Entity\Menu
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminBundle]]
+            
+    app.admin.menuImage:
+        class: AdminBundle\Admin\ImageMenuAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Gestion des menus", label: "Images des menus spéciaux" }
+        arguments:
+            - ~
+            - RestaurantBundle\Entity\ImageMenu
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminBundle]]
+    
+    app.admin.Event:
+        class: AdminBundle\Admin\EventAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Gestion des événements", label: "Événement spéciaux" }
+        arguments:
+            - ~
+            - RestaurantBundle\Entity\Event
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminBundle]]
+            
+    app.admin.Reservation:
+        class: AdminBundle\Admin\ReservationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Gestion des réservations", label: "Réservations" }
+        arguments:
+            - ~
+            - RestaurantBundle\Entity\Reservation
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminBundle]]

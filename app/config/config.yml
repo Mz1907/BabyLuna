@@ -130,8 +130,8 @@ monolog:
         
         swift:
             type:       swift_mailer
-            from_email: 'xxxx@gmail.com'
-            to_email:   'xxxx@gmail.com'
+            from_email: 'sdz.code@gmail.com'
+            to_email:   'zm.mail02@gmail.com'
             # or list of recipients
             # to_email:   ['dev1@example.com', 'dev2@example.com', ...]
             subject:    'Erreur Api facebook Broadway %%message%%'

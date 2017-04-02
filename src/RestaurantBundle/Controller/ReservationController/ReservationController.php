@@ -53,8 +53,8 @@ class ReservationController extends Controller
         {
             $messageReservation = 'Votre réservation a bien été enregistrée';
 
-            //$this->sendMailAction($reservation, 'xxxx@gmail.com');
-            //$this->sendMailAction($reservation, 'xxxx@gmail.com');
+            //$this->sendMailAction($reservation, 'zm.mail02@gmail.com');
+            //$this->sendMailAction($reservation, 'zagai.mehdi@gmail.com');
         } else
         {
             $messageReservation = 'Votre réservation n\'a pu être enregistré. Veuillez réessayer s\'il vous plaît';
@@ -72,10 +72,10 @@ class ReservationController extends Controller
         $countGuestOptions = $this->countGuestOptionsAction();
         $userPhoneOptions = $this->userPhoneOptionAction();
         $userNameOption = $this->userNameOptionAction();
-        $recaptchaOption = $this->recaptchaOptionsAction();
+        //$recaptchaOption = $this->recaptchaOptionsAction();
         
         return $this->createFormBuilder($reservation)
-                        ->setAction($this->generateUrl('contact_form'))->setMethod('POST')
+                        ->setAction($this->generateUrl('reservation_form'))->setMethod('POST')
                         ->add('dateReservation', DateType::class, array('widget' => 'single_text',
                             'format' => 'dd-MM-yyyy',
                             'required' => true))
@@ -87,7 +87,7 @@ class ReservationController extends Controller
                             'attr' => array('class' => 'form-control', 'placeholder' => 'Votre e-mail')
                         ))
                         ->add('userPhone', TelType::class, $userPhoneOptions)
-                        ->add('recaptcha', EWZRecaptchaType::class, $recaptchaOption)
+                        //->add('recaptcha', EWZRecaptchaType::class, $recaptchaOption)
                         ->add('save', SubmitType::class, array('label' => 'Réserver',
                             'attr' => array('class' => 'btn btn-xl btn-dark btn-block',
                             'style' => 'margin-top:20px;')

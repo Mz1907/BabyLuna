@@ -217,7 +217,9 @@
                             <ul class="list-unstyled">
                                 <li class="menu-box clearfix margin-b-20">
                                     <div class="thumb">
-                                        <img src="assets/images/a2.jpg" width="70" class="img-responsive" alt="">
+                                        {% image 'bundles/restaurant/assets/images/resto6.jpg'%}
+                                        <img src="{{ asset_url }}" alt="Plat 2" class="img-responsive" />
+                                        {% endimage %}
                                     </div>
                                     <div class="menu-content">
                                         <h4><a href="#">Special Coffee</a> <span>$7.79</span></h4>
@@ -378,22 +380,22 @@
                     <div class="testi-slider">
                         <ul class="slides">
                             {% for facebookEvent in vars['lastEvents']%}
-                            <li>
-                                <p>
-                                    {{facebookEvent.description }} 
-                                </p>
+                                <li>
+                                    <p>
+                                        {{facebookEvent.description }} 
+                                    </p>
 
-                                <div class="testi-info">
-                                    <!--<img src="assets/images/avtar-1.jpg" alt="" width="50" class="img-circle">-->
-                                    <h4>{{ facebookEvent.name }} <small> - {{facebookEvent.dateStart | localizeddate('medium', 'medium', app.request.locale,  null, "cccc, d MMMM Y 'à' HHhmm" )}}</small></h4>
+                                    <div class="testi-info">
+                                        <!--<img src="assets/images/avtar-1.jpg" alt="" width="50" class="img-circle">-->
+                                        <h4>{{ facebookEvent.name }} <small> - {{facebookEvent.dateStart | localizeddate('medium', 'medium', app.request.locale,  null, "cccc, d MMMM Y 'à' HHhmm" )}}</small></h4>
 
-                                    <i class="ion-star"></i>
-                                    <i class="ion-star"></i>
-                                    <i class="ion-star"></i>
-                                    <i class="ion-star"></i>
-                                    <i class="ion-star"></i>
-                                </div>
-                            </li><!--slide item-->
+                                        <i class="ion-star"></i>
+                                        <i class="ion-star"></i>
+                                        <i class="ion-star"></i>
+                                        <i class="ion-star"></i>
+                                        <i class="ion-star"></i>
+                                    </div>
+                                </li><!--slide item-->
                             {% endfor %}
                         </ul>
                     </div>

@@ -53,8 +53,8 @@ class ReservationController extends Controller
         {
             $messageReservation = 'Votre réservation a bien été enregistrée';
 
-            //$this->sendMailAction($reservation, 'zm.mail02@gmail.com');
-            //$this->sendMailAction($reservation, 'zagai.mehdi@gmail.com');
+            //$this->sendMailAction($reservation, 'xxx@gmail.com');
+            //$this->sendMailAction($reservation, 'xxx@gmail.com');
         } else
         {
             $messageReservation = 'Votre réservation n\'a pu être enregistré. Veuillez réessayer s\'il vous plaît';
@@ -186,7 +186,7 @@ class ReservationController extends Controller
 
         $mail = \Swift_Message::newInstance('Une nouvelle réservation a été reçue.')
                 ->setSubject('Nouvelle réservation enregistrée.')
-                ->setFrom('sdz.code@gmail.com')
+                ->setFrom('xxx@gmail.com')
                 ->setTo($to)
                 ->setBody($this->renderView(
                         'Emails/newReservation.html.twig', ['dateReservation' => $resDate->setTime($resTime->format('H'), $resTime->format('i')),

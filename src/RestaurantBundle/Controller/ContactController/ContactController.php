@@ -136,8 +136,8 @@ class ContactController extends Controller
         {
             $messageContact = 'Votre message a bien été envoyé';
 
-            $this->sendMailAction($contact, 'zm.mail02@gmail.com');
-            //$this->sendMailAction($contact, 'zagai.mehdi@gmail.com');
+            $this->sendMailAction($contact, 'xxx@gmail.com');
+            //$this->sendMailAction($contact, 'xxx@gmail.com');
         } else
         {
             $messageContact = 'Votre message n\'a pu être envoyé. Veuillez réessayer s\'il vous plaît';
@@ -158,7 +158,7 @@ class ContactController extends Controller
         
         $mail = \Swift_Message::newInstance('Un nouveau message a été reçu (formulaire de contact).')
                 ->setSubject('Nouveau message du formulaire de contact.')
-                ->setFrom('sdz.code@gmail.com')
+                ->setFrom('xxx@gmail.com')
                 ->setTo($to)
                 ->setBody($this->renderView(
                     'Emails/contact.html.twig', [

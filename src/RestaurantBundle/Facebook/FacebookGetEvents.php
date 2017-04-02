@@ -12,7 +12,7 @@ class FacebookGetEvents
 {
 
     const URL_API = "https://graph.facebook.com/v2.8/me?fields=id%2Cname%2Cevents.limit(5)%7Bname%2Cdescription%2Cstart_time%2Cend_time%2Ccover%7D&access_token=";
-    const ACCESS_TOKEN = 'EAARcMJ0YY6MBAA05gI2NyZCaWpgmuCM3USHN1trkbqHO9DM3J9TBhyYA0hKoefY87WxHdKi2AHPrU9gxqVZCKQjvH04IgwNRcQ4n3rXJdmnx4ApoFOmURiIZBZAoAmHovRDnZC05ZB5QtUgdrpP9Vh2UyzTSLeT8MZD';
+    const ACCESS_TOKEN = 'xxx';
     const PATH_COVER = __DIR__ . '/../../../web/ImagesFacebookEventCovers/';
 
     private $logger;

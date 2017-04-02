@@ -84,7 +84,7 @@ fos_user:
         confirmation:
             enabled: true
             from_email: # Use this node only if you don't want the global email address for the confirmation email
-                address: sdz.code@gmail.com
+                address: xxx@gmail.com
                 sender_name:    Administrateur
             template:   FOSUserBundle:Registration:email.txt.twig
     service:
@@ -130,8 +130,8 @@ monolog:
         
         swift:
             type:       swift_mailer
-            from_email: 'sdz.code@gmail.com'
-            to_email:   'zm.mail02@gmail.com'
+            from_email: 'xxx@gmail.com'
+            to_email:   'xxx@gmail.com'
             # or list of recipients
             # to_email:   ['dev1@example.com', 'dev2@example.com', ...]
             subject:    'Erreur Api facebook Broadway %%message%%'
@@ -141,8 +141,8 @@ monolog:
             channels: [facebook]
 
 ewz_recaptcha:
-    public_key:  6LfeRA4UAAAAAAFhUOsBssGeWpnuo6fWsHIbuUf1 
-    private_key: 6LfeRA4UAAAAAAgSq5gbcDsE7iPUUw2IRmgvlyXJ
+    public_key:  xxx 
+    private_key: xxx
     # Not needed as "%kernel.default_locale%" is the default value for the locale key
     locale_key:  %kernel.default_locale%
     locale_from_request: true

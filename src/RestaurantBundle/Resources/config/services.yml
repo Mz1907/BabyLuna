@@ -1,0 +1,6 @@
+services:
+    facebook.getEvents:
+        class: RestaurantBundle\Facebook\FacebookGetEvents
+        arguments: ['@logger']
+        tags:
+            - { name: monolog.logger, channel: facebook }

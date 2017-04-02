@@ -1,0 +1,29 @@
+RestaurantBundle\Entity\Contact:
+    type: entity
+    table: null
+    repositoryClass: RestaurantBundle\Repository\ContactRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        userName:
+            type: string
+            length: 255
+        userMail:
+            type: string
+            length: 255
+        userPhone:
+            type: string
+            length: 255
+            nullable: true
+        message:
+            type: text
+        subscribeNewsletter:
+            type: boolean
+        created:
+            type: datetime
+            unique: true
+    lifecycleCallbacks: {  }

@@ -1,0 +1,41 @@
+RestaurantBundle\Entity\Reservation:
+    type: entity
+    table: null
+    repositoryClass: RestaurantBundle\Repository\ReservationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateReservation:
+            type: date
+            nullable: false
+        timeReservation:
+            type: time
+            nullable: false
+        userName:
+            type: string
+            length: 255
+            nullable: false
+        userMail:
+            type: string
+            length: 255
+            nullable: true
+        userPhone:
+            type: string
+            length: 255
+            nullable: false
+        countGuest:
+            type: smallint
+            nullable: false
+        created:
+            type: datetime
+            nullable: false
+            unique: true
+        updated:
+            type: datetime
+            nullable: true
+            unique: false
+    lifecycleCallbacks: {  }

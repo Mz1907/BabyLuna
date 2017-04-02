@@ -1,0 +1,59 @@
+RestaurantBundle\Entity\Product:
+    type: entity
+    manyToMany:
+        productCategories: 
+            targetEntity: ProductCategory
+            cascade: ["persist"]
+    oneToMany:
+        images:
+            targetEntity: Image
+            mappedBy: product
+            cascade: ["persist", "remove", "merge"]
+    manyToMany:
+        menus: 
+            targetEntity: Menu
+            mappedBy: products
+            cascade: ["persist", "merge"]
+             
+    table: null
+    repositoryClass: RestaurantBundle\Repository\ProductRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+            nullable: false
+        description:
+            type: text
+            nullable: true
+        price:
+            type: text
+            length: 128
+            nullable: true
+        available:
+            type: boolean
+            nullable: false
+        takeAway:
+            type: boolean
+            nullable: false
+        slug:
+            type: string
+            length: 255
+            unique: false
+            gedmo:
+                slug:
+                    separator: "-"
+                    style: camel
+                    fields:
+                        - name
+        created:
+            type: datetime
+        updated:
+            type: datetime
+            nullable: true

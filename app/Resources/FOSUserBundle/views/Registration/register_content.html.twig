@@ -1,0 +1,53 @@
+{% block fos_user_content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+    <!--==============page header============-->
+    <div class="page-breadcrumb" data-stellar-background-ratio="0.5">
+        <div class="container text-center">
+            <h1>Cr&eacute;er un compte</h1>
+        </div>
+    </div>
+    <!--==============end page header============-->
+    <div class="overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="space-80"></div>
+                    <div class="login-register-container">
+                        <h3 class="margin-b-20 text-uppercase">Cr&eacute;er un compte</h3>
+                        <form action="{{path('fos_user_registration_register')}}" method="POST" class="fos_user_registration_register">
+                            <input type="hidden" id="fos_user_registration_form__token" name="fos_user_registration_form[_token]" value="{{form['_token'].vars['value']}}">
+                            <div class="form-group">
+                                {{ form_errors(form['email']) }}
+                                <input type="email" id="useremail" name="fos_user_registration_form[email]" required="required" class="form-control" placeholder="Votre e-mail*"> 
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form['username']) }}
+                                <input type="text" id="username" name="fos_user_registration_form[username]" required="required" class="form-control" placeholder="Votre nom d'utilisateur*"> 
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form['plainPassword']['first']) }}
+                                <input type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" require class="form-control" placeholder="Mot de passe*"> 
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form['plainPassword']['second']) }}
+                                <input type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" require class="form-control" placeholder="R&eacute;p&eacute;ter le mot de passe*">
+                            </div>
+                            <div class="clearfix">
+                                <div class="pull-right text-right">
+                                    <input type="submit" class="btn btn-dark btn-lg" value="{{ 'registration.submit'|trans }}">                                        
+                                </div>
+                                <div class="pull-left">
+                                    <div>
+                                        <label for="agree">&Ecirc;tre averti des promotions par e-mail</label>
+                                        <input type="checkbox" name="agree" id="agree">
+                                    </div>
+                                </div>                                                                    
+                            </div>
+                        </form>
+                    </div>
+                    <div class="space-80"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

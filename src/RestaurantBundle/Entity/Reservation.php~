@@ -1,0 +1,263 @@
+<?php
+
+namespace RestaurantBundle\Entity;
+
+/**
+ * Reservation
+ */
+class Reservation
+{
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateReservation;
+
+    /**
+     * @var \DateTime
+     */
+    private $timeReservation;
+
+    /**
+     * @var string
+     */
+    private $userName;
+
+    /**
+     * @var string
+     */
+    private $userMail;
+
+    /**
+     * @var string
+     */
+    private $userPhone;
+
+    /**
+     * @var integer
+     */
+    private $countGuest;
+
+    /**
+     * @var \DateTime
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     */
+    private $updated;
+
+    
+    public function __construct()
+    {
+        $this->created = new \Datetime();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateReservation
+     *
+     * @param \DateTime $dateReservation
+     *
+     * @return Reservation
+     */
+    public function setDateReservation($dateReservation)
+    {
+        $this->dateReservation = $dateReservation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateReservation
+     *
+     * @return \DateTime
+     */
+    public function getDateReservation()
+    {
+        return $this->dateReservation;
+    }
+
+    /**
+     * Set timeReservation
+     *
+     * @param \DateTime $timeReservation
+     *
+     * @return Reservation
+     */
+    public function setTimeReservation($timeReservation)
+    {
+        $this->timeReservation = $timeReservation;
+
+        return $this;
+    }
+
+    /**
+     * Get timeReservation
+     *
+     * @return \DateTime
+     */
+    public function getTimeReservation()
+    {
+        return $this->timeReservation;
+    }
+
+    /**
+     * Set userName
+     *
+     * @param string $userName
+     *
+     * @return Reservation
+     */
+    public function setUserName($userName)
+    {
+        $this->userName = $userName;
+
+        return $this;
+    }
+
+    /**
+     * Get userName
+     *
+     * @return string
+     */
+    public function getUserName()
+    {
+        return $this->userName;
+    }
+
+    /**
+     * Set userMail
+     *
+     * @param string $userMail
+     *
+     * @return Reservation
+     */
+    public function setUserMail($userMail)
+    {
+        $this->userMail = $userMail;
+
+        return $this;
+    }
+
+    /**
+     * Get userMail
+     *
+     * @return string
+     */
+    public function getUserMail()
+    {
+        return $this->userMail;
+    }
+
+    /**
+     * Set userPhone
+     *
+     * @param string $userPhone
+     *
+     * @return Reservation
+     */
+    public function setUserPhone($userPhone)
+    {
+        $this->userPhone = $userPhone;
+
+        return $this;
+    }
+
+    /**
+     * Get userPhone
+     *
+     * @return string
+     */
+    public function getUserPhone()
+    {
+        return $this->userPhone;
+    }
+
+    /**
+     * Set countGuest
+     *
+     * @param integer $countGuest
+     *
+     * @return Reservation
+     */
+    public function setCountGuest($countGuest)
+    {
+        $this->countGuest = $countGuest;
+
+        return $this;
+    }
+
+    /**
+     * Get countGuest
+     *
+     * @return integer
+     */
+    public function getCountGuest()
+    {
+        return $this->countGuest;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Reservation
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return Reservation
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+}

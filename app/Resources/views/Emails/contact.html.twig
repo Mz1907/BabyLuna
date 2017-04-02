@@ -1,0 +1,14 @@
+        <h3 style="text-decoration: underline;">Un message de contact a été reçu</h3>
+        <p>Date du message: {{ dateMessage | localizeddate('medium', 'medium', app.request.locale ) }}</p>
+        
+        <p>Nom de contact de l'utilisateur: {{userName}}</p>
+        <p>Email du contact: {{userEmail}}</p>
+        {% if userPhone|length > 0  %}
+            <p>N° de téléphone de contact: {{userPhone}}</p>
+            {% else %}
+            <p>Le contact n'a pas souhaité donner un numéro de téléphone</p>
+        {% endif  %}
+        
+        <p>Message envoyé:</p>
+        <p>{{message}}</p>
+        

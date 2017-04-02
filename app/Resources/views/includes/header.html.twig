@@ -1,0 +1,76 @@
+<header class="header header-top-transparent">
+    <!--top bar-->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 hidden-xs">
+                    <ul class="list-inline">
+                        <li><i class="ion-ios-telephone"></i> 02 999 90 90</a></li>
+                        <li><a href="mailto:babyluna@gmail.com"><i class="ion-email"></i> babyluna@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <ul class="list-inline level-2">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li class="b-table">{{ app.user.username }}</li>
+                            <li class="b-table"><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                        {% else %}
+                            <li class="b-table"><a href="{{path('fos_user_security_login')}}" class=" waves-float waves-button">Se connecter</a></li>
+                            <li class="b-table"><a href="{{path('fos_user_registration_register')}}" class=" waves-float waves-button">s'inscrire</a></li>
+                        {% endif %}
+
+                        <li class="lang"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Lang <i class="ion-ios-arrow-down"></i></a>
+                            <ul class="dropdown-menu lang-dropdown">
+                                <a href="javascript:void(0)">
+                                    {% image 'bundles/restaurant/assets/images/fr.png'%}
+                                    <img src="{{ asset_url }}" alt="Fran&ccedil;ais" />
+                                    {% endimage %}
+                                    Fran&ccedil;ais
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <span>
+                                        {% image 'bundles/restaurant/assets/images/usa-flag.png'%}
+                                        <img src="{{ asset_url }}" alt="English" />
+                                        {% endimage %}
+                                        English
+                                    </span>
+                                </a>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end top bar-->
+    <!--main navigation-->
+    <nav class="navbar navbar-default navbar-static-top sticky-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    {% image 'bundles/restaurant/assets/images/logo-dark.png'%}
+                    <img src="{{ asset_url }}" alt="Logo du restaurant" class="logo-default logo-scroll" />
+                    {% endimage %}
+                    <!-- <img src="assets/images/logo-light.png" alt="logo" class="logo-default"> -->
+                    <!-- <img src="assets/images/logo-dark.png" alt="logo" class="logo-scroll"> -->
+
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{path('restaurant_homepage')}}">Accueil </span></a></li>
+                    <li><a href="{{path('restaurant_carte')}}">La carte </a></li>
+                    <li><a href="{{path('reservation_form')}}">R&eacute;servation </span></a></li>
+                    <!-- <li><a href="{{path('restaurant_carte')}}">Actualit&eacute;s </span></a></li> -->
+                    <li><a href="{{path('contact_form')}}">Contact </a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+</header>

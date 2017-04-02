@@ -1,0 +1,31 @@
+{% block fos_user_content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+    <!--==============page header============-->
+    <div class="page-breadcrumb" data-stellar-background-ratio="0.5">
+        <div class="container text-center">
+            <h1>Cr&eacute;er un compte</h1>
+        </div>
+    </div>
+    <!--==============end page header============-->
+    <div class="overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="space-80"></div>
+                    <div class="login-register-container">
+                        <div class="login-register-inner">
+                            <h3 class="margin-b-20 text-uppercase">Cr&eacute;er un compte</h3>
+                            {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+                            {{ form_widget(form) }}
+                            <div>
+                                <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />kkkkkkkkkkkkkkkkkkk
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                    <div class="space-80"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

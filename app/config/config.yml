@@ -1,0 +1,150 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@RestaurantBundle/Resources/config/services.yml" }
+    - { resource: "@AdminBundle/Resources/config/services.yml" }
+    - { resource: "@AdminBundle/Resources/config/admin.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+#enable intl extensions
+services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }  
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }  
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: RestaurantBundle\Entity\User
+    
+    registration:
+        form:
+            type: RestaurantBundle\Form\RegistrationType
+        confirmation:
+            enabled: true
+            from_email: # Use this node only if you don't want the global email address for the confirmation email
+                address: sdz.code@gmail.com
+                sender_name:    Administrateur
+            template:   FOSUserBundle:Registration:email.txt.twig
+    service:
+        mailer:  fos_user.mailer.twig_swift
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+    
+#installation de sonataAdmin
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+        
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+            
+#création de mon custom channel pour les logs des facebookEvents
+monolog:
+    channels: [facebook]
+    handlers:
+        facebook:
+            # log all messages (since debug is the lowest level)
+            level:    debug
+            type:     stream
+            path:     '%kernel.logs_dir%/facebook.log'
+            channels: [facebook]
+        
+        swift:
+            type:       swift_mailer
+            from_email: 'xxxx@gmail.com'
+            to_email:   'xxxx@gmail.com'
+            # or list of recipients
+            # to_email:   ['dev1@example.com', 'dev2@example.com', ...]
+            subject:    'Erreur Api facebook Broadway %%message%%'
+            level:      error
+            formatter:  monolog.formatter.html
+            content_type: text/html
+            channels: [facebook]
+
+ewz_recaptcha:
+    public_key:  6LfeRA4UAAAAAAFhUOsBssGeWpnuo6fWsHIbuUf1 
+    private_key: 6LfeRA4UAAAAAAgSq5gbcDsE7iPUUw2IRmgvlyXJ
+    # Not needed as "%kernel.default_locale%" is the default value for the locale key
+    locale_key:  %kernel.default_locale%
+    locale_from_request: true
+    #mettre à false en local pour désactiver en mode prod
+    enabled: true

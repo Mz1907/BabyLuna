@@ -1,0 +1,31 @@
+RestaurantBundle\Entity\Event:
+    type: entity      
+    table: null
+    repositoryClass: RestaurantBundle\Repository\EventRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        dateStart:
+            type: datetime
+        dateEnd:
+            type: datetime
+        category:
+            type: string
+            length: 255
+        description:
+            type: text
+        created:
+            type: datetime
+            unique: true
+        updated:
+            type: datetime
+            unique: true
+            nullable: true
+    lifecycleCallbacks: {  }

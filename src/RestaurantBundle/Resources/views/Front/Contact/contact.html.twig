@@ -1,0 +1,151 @@
+{% extends '::base.html.twig' %}
+{% block title %}Broadway-Waterloo: Contact{% endblock %}
+{% block stylesheets %}
+    {% stylesheets 
+        'bundles/restaurant/bootstrap/css/bootstrap.min.css' filter='cssrewrite'
+        'bundles/restaurant/ionicons/css/ionicons.min.css'
+        'bundles/restaurant/flexslider/flexslider.css'
+        'bundles/restaurant/jasny-bootstrap/css/jasny-bootstrap.min.css'
+        'bundles/restaurant/css/style.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+{% block body %}
+    <!--pre-loader-->
+    <div id="preloader"></div>
+    <!--pre-loader-->
+    <!--===============main navigation + top bar==========================-->
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <!--===============end main navigation + top bar =====================-->
+    <!--==============page header============-->
+    <div class="page-breadcrumb" data-stellar-background-ratio="0.5">
+        <div class="container text-center">
+            <h1>Contactez nous</h1>
+        </div>
+    </div>
+    <!--==============end page header============-->
+    <div class="container-fluid no-padd contact-wrapper">
+        <div class="row vertical-align-child no-margin">
+            <div class="col-md-8 no-padd">
+                <!--Google Maps-->
+                <div class="google-map-container">
+                    <div id="googlemaps" style="width: 100%;height: 400px;"></div>
+                </div>
+                <!--/Google Maps-->
+            </div>
+            <div class="col-md-4 no-padd address-bg">
+                <h3>Notre adresse</h3>
+                <ul class="list-unstyled">
+                    <li>Chaussée de Bruxelles 415</li>
+                    <li>Waterloo 1410</li>
+                    <li>T&eacute;l&eacute;phone 02 851 70 70</li>
+                </ul> 
+            </div>
+        </div>
+    </div><!--/map wrap-->
+    <div class="space-80"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h3 class="text-capitalize text-center margin-b-20">Écrire un message</h3>
+
+                {% if vars['formContact'] is defined %}
+                    {% set form=vars['formContact'] %}
+                {% endif %}
+                {{form_start(form, {'attr': {'class': 'resto-contact'}})}}
+                <div class="row">
+                    <div class="col-sm-12"> 
+                        <div class="col-sm-12 margin-b-20">
+                            {{ form_errors(form.userName) }}
+                            {{ form_widget(form.userName)}}
+                        </div>
+                        <div class="col-sm-12 margin-b-20">
+                            {{ form_errors(form.userMail) }}
+                            {{ form_widget(form.userMail)}}
+                        </div>
+                        <div class="col-sm-12 margin-b-20">
+                            {{ form_errors(form.userPhone) }}
+                            {{ form_widget(form.userPhone)}}
+                        </div>
+
+                        <div class="col-sm-12 margin-b-20">
+                            {{ form_errors(form.message) }}
+                            {{ form_widget(form.message)}}
+                        </div>
+                        <div class="col-sm-12">
+                            {{ form_label(form.subscribeNewsletter) }}
+                            {{ form_errors(form.subscribeNewsletter) }}
+                            {{ form_widget(form.subscribeNewsletter)}}
+                        </div>
+                        <div class="col-sm-6 text-center">
+                            {{ form_widget(form.recaptcha)}}
+                        </div>
+                        <div class="col-sm-6 text-center">
+                            {{ form_widget(form.save)}}
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <div class="data-status"></div> <!-- data submit status -->
+                        </div>
+                    </div>                
+                </div>
+                {{form_end(form)}}
+            </div>
+        </div>
+    </div>
+    <div class="space-80"></div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+    <!--back to top-->
+    <a href="#" class="scrollToTop"><i class="ion-android-arrow-up"></i></a>
+    <!--back to top end-->
+    {% block javascript %}
+        {% javascripts
+
+        'bundles/restaurant/jquery/dist/jquery.min.js'
+        'bundles/restaurant/js/jquery.easing.min.js'
+        'bundles/restaurant/bootstrap/js/bootstrap.min.js'
+        'bundles/restaurant/flexslider/jquery.flexslider-min.js'
+        'bundles/restaurant/js/jquery.stellar.min.js'
+        'bundles/restaurant/js/jquery.sticky.js'
+        'bundles/restaurant/js/jquery.countdown.min.js'
+        'bundles/restaurant/jasny-bootstrap/js/jasny-bootstrap.min.js'
+        'bundles/restaurant/js/bootstrap-hover-dropdown.min.js'
+        'bundles/restaurant/js/template-custom.js'
+        'bundles/restaurant/js/contact.js'
+        'bundles/restaurant/js/jquery.gmaps.min.js'
+
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyBU-mZGyTKZxIouk9zuxePthgxcVRSBgmU"></script>
+        <script type="text/javascript">
+            (function ($) {
+                $(document).ready(function () {
+
+                    $('#googlemaps').gMap({
+                        maptype: 'ROADMAP',
+                        scrollwheel: false,
+                        zoom: 13,
+                        markers: [
+                            {
+                                address: 'Chaussée de Bruxelles 415', // Your Adress Here
+                                html: '<strong>Notre restaurant</strong><br>Chaussée de Bruxelles 415 </br>WATERLOO 1410',
+                                popup: false,
+                                icon: {
+                                    iconsize: [28, 40],
+                                    iconanchor: [20, 40]
+                                }
+                            }
+                        ]
+                    });
+                });
+            })(this.jQuery);
+        </script>
+    {% endblock  %}
+{% endblock %}

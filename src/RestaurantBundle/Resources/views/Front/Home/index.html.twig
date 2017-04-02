@@ -1,0 +1,509 @@
+{% extends '::base.html.twig' %}
+{% block title %}BabyLuna: accueil{% endblock %}
+{% block stylesheets %}
+    {% stylesheets 
+        'bundles/restaurant/bootstrap/css/bootstrap.min.css' filter='cssrewrite'
+        'bundles/restaurant/ionicons/css/ionicons.min.css'
+        'bundles/restaurant/flexslider/flexslider.css'
+        'bundles/restaurant/jasny-bootstrap/css/jasny-bootstrap.min.css'
+        'bundles/restaurant/revolution/css/settings.css'
+        'bundles/restaurant/revolution/css/layers.css'
+        'bundles/restaurant/revolution/css/navigation.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="web/bundles/restaurant/css/style.css" />
+{% endblock %}
+{% block body %}
+    <!--pre-loader-->
+    <div id="preloader"></div>
+    <!--pre-loader-->
+    <!--===============main navigation + top bar==========================-->
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <!--===============end main navigation + top bar =====================-->
+
+    <!--slider revolution start-->
+    <div class="rev_slider_wrapper">
+        <div id="slider1" class="rev_slider fullwidthabanner"  data-version="5.0">
+            <ul> 
+                <li data-transition="random"> 
+                    <!-- MAIN IMAGE -->
+                    {% image 'bundles/restaurant/assets/images/resto1.jpg'%}
+                    <img src="{{ asset_url }}" alt="Fran&ccedil;ais" width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" />
+                    {% endimage %}
+                    <!-- <img src="assets/images/bg1.jpg"  alt=""  width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"> -->
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption tp-resizeme slider-title" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
+                         data-fontsize="['80','80','80','45']"
+                         data-lineheight="['80','80','80','50']"
+                         data-width="none"
+                         data-height="none"
+
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="500">BabyLuna</div>
+                    <div class="tp-caption tp-resizeme slider-caption" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['90','90','90','70']" 
+                         data-fontsize="['20','20','20','15']"
+                         data-lineheight="['25','25','25','20']"
+                         data-width="none"
+                         data-height="none" 
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="1000">Le BabyLuna vous accueille dans un cadre agréable et vous réserve un accueil chaleureux</div>
+                    <div class="tp-caption tp-resizeme slider-button" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['160','160','160','120']" 
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="1500"><a href="{{path('reservation_form')}}" class="btn btn-xl btn-dark">R&eacute;server une table</a></div>
+                </li>
+                <li data-transition="random"> 
+                    <!-- MAIN IMAGE -->
+                    {% image 'bundles/restaurant/assets/images/resto2.jpg'%}
+                    <img src="{{ asset_url }}" alt="Fran&ccedil;ais" width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" />
+                    {% endimage %}
+                    <!-- <img src="assets/images/bg2.jpg"  alt=""  width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"> -->
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption tp-resizeme slider-title" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
+                         data-fontsize="['80','80','80','45']"
+                         data-lineheight="['80','80','80','50']"
+                         data-width="none"
+                         data-height="none"
+
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="500">Organisez vos &eacute;v&eacute;nements</div>
+                    <div class="tp-caption tp-resizeme slider-caption" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['90','90','90','70']" 
+                         data-fontsize="['20','20','20','15']"
+                         data-lineheight="['25','25','25','20']"
+                         data-width="none"
+                         data-height="none" 
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="1000">Découvrez toutes nos soirées et événements</div>
+                    <div class="tp-caption tp-resizeme slider-button" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['160','160','160','120']" 
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="1500"><a href="{{path('reservation_form')}}" class="btn btn-xl btn-primary">R&eacute;server une table</a></div>
+                </li>
+                <li data-transition="random"> 
+                    <!-- MAIN IMAGE -->
+
+                    {% image 'bundles/restaurant/assets/images/resto4.jpg'%}
+                    <img src="{{ asset_url }}" alt="Fran&ccedil;ais" width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" />
+                    {% endimage %}
+                    <!-- <img src="assets/images/bg11.jpg"  alt=""  width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"> -->
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption tp-resizeme slider-title" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
+                         data-fontsize="['80','80','80','45']"
+                         data-lineheight="['80','80','80','50']"
+                         data-width="none"
+                         data-height="none"
+
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="500">Lounge cocktails et Tapas</div>
+                    <div class="tp-caption tp-resizeme slider-caption" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['90','90','90','70']" 
+                         data-fontsize="['20','20','20','15']"
+                         data-lineheight="['25','25','25','20']"
+                         data-width="none"
+                         data-height="none" 
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="1000">Ouverture coin lounge apr&egrave;s 22h</div>
+                    <div class="tp-caption tp-resizeme slider-button" 
+                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                         data-y="['middle','middle','middle','middle']" data-voffset="['160','160','160','120']" 
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;" 
+                         data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                         data-transform_out="auto:auto;s:300;" 
+                         data-start="1500"><a href="{{path('reservation_form')}}" class="btn btn-xl btn-primary">R&eacute;server une table</a></div>
+                </li>
+            </ul> 
+        </div><!-- END REVOLUTION SLIDER -->
+    </div><!-- END OF SLIDER WRAPPER -->
+    <!--end slider revolution-->
+
+    <div class="space-70"></div>
+    <div class="overflow-hidden">
+        <div class="container">
+            <div class="row vertical-align-child">
+                <div class="col-md-6 text-center">
+                    <h1 class="title-1">Bienvenu au BabyLuna<span class="text-color "> Restaurant</span></h1>  
+                    <h5 class="subtitle">Pr&eacute;sentation</h5>
+                    <div class="space-30"></div>
+                    <p>
+                        Le BabyLuna vous accueille dans un cadre <span class="text-color">agr&eacute;able</span> et vous r&eacute;serve un accueil chaleureux. La cuisine venant de tous les continents est vari&eacute;e et &eacute;quilibr&eacute;e, servie dans un d&eacute;cor de go&ucirc;t qui invite toutes les <span class="text-color">g&eacute;n&eacute;rations</span> &agrave; partager un agr&eacute;able moment.
+                    </p>
+                    <blockquote>
+                        Pour toute r&eacute;servation sup&eacute;rieur &agrave; 8 personnes, merci de contacter le restaurant directement au <span class="text-color">02 999 90 90</span>.
+
+                    </blockquote>
+                    <div class="space-30"></div>
+                </div>
+                <div class="col-md-6">
+                    {% image 'bundles/restaurant/assets/images/resto8.jpg'%}
+                    <img src="{{ asset_url }}" alt="Plat 2" class="img-responsive" />
+                    {% endimage %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space-70"></div>
+    <div class="cta-background parallax-background" data-stellar-background-ratio="0.3">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-4 text-left">
+                    <p class="lead ">
+                        " Cuisiner avec passion permet de partager des exp&eacute;riences de d&eacute;gustation &eacute;tonnantes "
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div><!--end call to action-->
+    <div class="space-70"></div>
+
+    <div class="container">
+        <div class="text-center">
+            <h1 class="title-1">Aujourd'hui <span class="text-color ">sp&eacute;cial</span></h1>  
+            <h5 class="subtitle">offre du jour</h5>
+            <div class="space-30"></div>
+        </div>
+        <div class="row vertical-align-child">
+            <div class="col-md-6">
+                <div>
+
+                    <!-- Nav tabs -->
+                    <ul class="list-inline menu-tabs margin-b-30" role="tablist">
+                        <li role="presentation" class="active"><a href="#drink" aria-controls="drink" role="tab" data-toggle="tab">Drinks</a></li>
+                        <li role="presentation"><a href="#lunch" aria-controls="lunch" role="tab" data-toggle="tab">Lunch</a></li>
+                        <li role="presentation"><a href="#dinner" aria-controls="dinner" role="tab" data-toggle="tab">Dinner</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="drink">
+                            <ul class="list-unstyled">
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/a2.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Special Coffee</a> <span>$7.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/a3.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Beers</a> <span>$12.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/a2.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Milk Tea</a> <span>$16.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-6.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Juice</a> <span>$14.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="lunch">
+                            <ul class="list-unstyled">
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-6.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Salad</a> <span>$7.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-3.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Sandwiches</a> <span>$14.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-1.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Cakes</a> <span>$9.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-8.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Appetizers</a> <span>$4.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="dinner">
+                            <ul class="list-unstyled">
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-9.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Rice & Flesh</a> <span>$8.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-6.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Seafood</a> <span>$11.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-5.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Chicken</a> <span>$6.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                                <li class="menu-box clearfix margin-b-20">
+                                    <div class="thumb">
+                                        <img src="assets/images/img-4.jpg" width="70" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="menu-content">
+                                        <h4><a href="#">Veal & Beef</a> <span>$9.79</span></h4>
+                                        <p>pellentesque enim. Aliquam tempor</p>
+                                    </div>
+                                </li><!--end menu box-->
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!--end tabs-->
+            </div>
+            <div class="col-md-6 text-center">
+
+                <div class="abso-img">
+                    <a href="{{path('restaurant_carte')}}" class="btn btn-dark btn-xl">Voir la carte compl&egrave;te</a>
+                    {% image 'bundles/restaurant/assets/images/resto5.jpg'%}
+                    <img src="{{ asset_url }}" alt="Plat 2" class="img-responsive" />
+                    {% endimage %}
+                </div>
+            </div>              
+        </div>
+    </div>
+    <div class="space-70"></div>
+    <div class="about-chefs" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h1 class="text-uppercase"> &Eacute;v&eacute;nements </h1>
+                    <p>
+                        Pour vos &eacute;v&eacute;nements priv&eacute;s (mariage, anniversaire, ...) ou professionnels (s&eacute;minaire, team building, r&eacute;ception d'entreprise,...), Le BabyLuna vous ouvre ses portes
+                    </p>
+                    <p>
+                        Salle de f&ecirc;tes. R&eacute;servations possibles en temps r&eacute;el. Menus enfants. Resto ambiance. Musique live. Parking et Spectacle. Espace fumeurs. A emporter, Wi-fi. De Nuit. Enfants bienvenus. Menu v&eacute;g&eacute;tarien.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div><!--about chef cta-->
+    <div class="testimonials" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <div class="text-center">
+                        <h1 class="title-1">Nos <span class="text-color ">événements</span></h1>  
+                        <h5 class="subtitle">Derniers events </h5>
+                        <div class="space-30"></div>
+                    </div>
+                    <div class="testi-slider">
+                        <ul class="slides">
+                            {% for facebookEvent in vars['lastEvents']%}
+                            <li>
+                                <p>
+                                    {{facebookEvent.description }} 
+                                </p>
+
+                                <div class="testi-info">
+                                    <!--<img src="assets/images/avtar-1.jpg" alt="" width="50" class="img-circle">-->
+                                    <h4>{{ facebookEvent.name }} <small> - {{facebookEvent.dateStart | localizeddate('medium', 'medium', app.request.locale,  null, "cccc, d MMMM Y 'à' HHhmm" )}}</small></h4>
+
+                                    <i class="ion-star"></i>
+                                    <i class="ion-star"></i>
+                                    <i class="ion-star"></i>
+                                    <i class="ion-star"></i>
+                                    <i class="ion-star"></i>
+                                </div>
+                            </li><!--slide item-->
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--testimonials end-->
+
+    <div class="cta-background-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                    <h1 class="text-uppercase">Notre newsletter</h1>
+                    <p>
+                        Abonnez-vous &agrave; notre newsletter afin d&rsquo;&ecirc;tre avertis mensuellement par e-mail de promotions et &eacute;v&eacute;nements. Vous pouvez vous d&eacute;sabonnez &agrave; tout moment d&rsquo;un simple clic.
+                    </p>
+                    <a href="#" class="btn btn-white btn-rounded">S'abonner</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cta-skin contact-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 margin-b-30">
+                    <i class="ion-email"></i>
+                    <div class="overflow-hidden">
+                        <h4>Email</h4>
+                        <p class="lead">
+                            BabyLuna@gmail.com
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-4 margin-b-30">
+                    <i class="ion-iphone"></i>
+                    <div class="overflow-hidden">
+                        <h4>T&eacute;l&eacute;phone</h4>
+                        <p class="lead">
+                            02 999 90 90
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-4 margin-b-30">
+                    <i class="ion-map"></i>
+                    <div class="overflow-hidden">
+                        <h4>Location</h4>
+                        <p class="lead">
+                            Rue Léon Jouhaux 81 &ndash; 1050 Ixelles
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+    <!--back to top-->
+    <a href="#" class="scrollToTop"><i class="ion-android-arrow-up"></i></a>
+    <!--back to top end-->
+    {% block javascript %}
+        {% javascripts
+
+        'bundles/restaurant/jquery/dist/jquery.min.js'
+        'bundles/restaurant/js/jquery.easing.min.js'
+        'bundles/restaurant/bootstrap/js/bootstrap.min.js'
+        'bundles/restaurant/flexslider/jquery.flexslider-min.js'
+        'bundles/restaurant/js/jquery.stellar.min.js'
+        'bundles/restaurant/js/jquery.sticky.js'
+        'bundles/restaurant/js/jquery.countdown.min.js'
+        'bundles/restaurant/jasny-bootstrap/js/jasny-bootstrap.min.js'
+        'bundles/restaurant/js/bootstrap-hover-dropdown.min.js'
+        'bundles/restaurant/js/template-custom.js'
+
+        'bundles/restaurant/revolution/js/jquery.themepunch.tools.min.js'
+        'bundles/restaurant/revolution/js/jquery.themepunch.revolution.min.js'
+        'bundles/restaurant/revolution/js/extensions/revolution.extension.video.min.js'
+        'bundles/restaurant/revolution/js/extensions/revolution.extension.slideanims.min.js'
+        'bundles/restaurant/revolution/js/extensions/revolution.extension.layeranimation.min.js'
+        'bundles/restaurant/revolution/js/extensions/revolution.extension.navigation.min.js'
+        'bundles/restaurant/revolution/js/extensions/revolution.extension.parallax.min.js'
+
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <script>
+            jQuery(document).ready(function () {
+                jQuery("#slider1").revolution({
+                    sliderType: "standard",
+                    jsFileLocation: "../../revolution/js/",
+                    sliderLayout: "fullscreen",
+                    dottedOverlay: "none",
+                    delay: 9000,
+                    navigation: {
+                        arrows: {enable: true}
+                    },
+                    parallax: {
+                        type: "on",
+                        levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85],
+                        origo: "enterpoint",
+                        speed: 400,
+                        bgparallax: "on",
+                        disable_onmobile: "off"
+                    },
+                    gridwidth: 1170,
+                    gridheight: 600
+                });
+            });
+        </script>
+    {% endblock  %}
+{% endblock %}

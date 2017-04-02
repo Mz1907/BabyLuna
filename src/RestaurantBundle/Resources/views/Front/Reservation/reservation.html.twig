@@ -1,0 +1,151 @@
+{% extends '::base.html.twig' %}
+{% block title %}Broadway-Waterloo: accueil{% endblock %}
+{% block stylesheets %}
+    {% stylesheets 
+        'bundles/restaurant/bootstrap/css/bootstrap.min.css' filter='cssrewrite'
+        'bundles/restaurant/ionicons/css/ionicons.min.css'
+        'bundles/restaurant/flexslider/flexslider.css'
+        'bundles/restaurant/jasny-bootstrap/css/jasny-bootstrap.min.css'
+        'bundles/restaurant/css/bootstrap-datepicker.min.css'
+        'bundles/restaurant/css/bootstrap-clockpicker.min.css'
+        'bundles/restaurant/css/style.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+{% block body %}
+    <!--pre-loader-->
+    <div id="preloader"></div>
+    <!--pre-loader-->
+    <!--===============main navigation + top bar==========================-->
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <!--===============end main navigation + top bar =====================-->
+    <!--==============page header============-->
+    <div class="page-breadcrumb" data-stellar-background-ratio="0.5">
+        <div class="container text-center">
+            <h1>R&eacute;server une table</h1>
+        </div>
+    </div>
+    <!--==============end page header============-->
+    <div class="space-80"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="margin-b-40">
+                    <h2 class="text-uppercase text-center">R&eacute;servation</h2>
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    </p>                    
+                    {% if vars['reservationMessage'] is defined %}
+                        <p class="{{vars['messageClass']}}">{{vars['reservationMessage']}}</p>
+                    {% endif %}
+                </div>
+                {% if vars['formReservation'] is defined  %}
+                    {% set form=vars['formReservation'] %}
+                    {{form_start(form, {'attr': {'class': 'reservation-form'}})}}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group date">
+                                {% set dateValue="now" | date_modify("+1 month")|date("m-Y") %}
+                                {{ form_errors(form.dateReservation) }}
+                                {{ form_widget(form.dateReservation, {'attr': 
+                            {
+                                'class': 'form-control datepicker',
+                                'data-provide': 'datepicker',
+                                'data-date-format': 'dd-mm-yyyy',
+                                'placeholder': 'Date de réservation',
+                                'value': 'Exemple: 25-'~dateValue
+                            }
+                        })
+                                }}
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group clockpicker">
+                                {{ form_errors(form.timeReservation) }}
+                                {{ form_widget(form.timeReservation, {'attr':
+                            {
+                                'class': 'form-control',
+                                'placeholder': 'Heure de réservation',
+                                'value': '19:30'
+                            }
+                        })
+                                }}        
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 margin-b-20">
+                            {{ form_label(form.countGuest)}}
+                            {{ form_errors(form.countGuest) }}
+                            {{ form_widget(form.countGuest) }}
+                        </div>
+                        <div class="col-sm-12 margin-b-20">
+                            {{ form_errors(form.userName) }}
+                            {{ form_widget(form.userName) }}
+                        </div>
+                        <div class="col-sm-12 margin-b-20">
+                            {{ form_errors(form.userPhone) }}
+                            {{ form_widget(form.userPhone) }}
+                        </div>
+                        <div class="col-sm-12 margin-b-20">
+                            {{ form_errors(form.userMail) }}
+                            {{ form_widget(form.userMail) }}
+                        </div>
+                    </div>
+                    {{form_end(form)}}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="space-80"></div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+    <!--back to top-->
+    <a href="#" class="scrollToTop"><i class="ion-android-arrow-up"></i></a>
+    <!--back to top end-->
+    {% block javascript %}
+        {% javascripts
+        'bundles/restaurant/jquery/dist/jquery.min.js'
+        'bundles/restaurant/js/jquery.easing.min.js'
+        'bundles/restaurant/bootstrap/js/bootstrap.min.js'
+        'bundles/restaurant/flexslider/jquery.flexslider-min.js'
+        'bundles/restaurant/js/jquery.stellar.min.js'
+        'bundles/restaurant/js/jquery.sticky.js'
+        'bundles/restaurant/js/jquery.countdown.min.js'
+        'bundles/restaurant/jasny-bootstrap/js/jasny-bootstrap.min.js'
+        'bundles/restaurant/js/bootstrap-hover-dropdown.min.js'
+        'bundles/restaurant/js/template-custom.js'
+
+        'bundles/restaurant/js/bootstrap-clockpicker.min.js'
+        'bundles/restaurant/js/bootstrap-datepicker.min.js'
+        'bundles/restaurant/icheck/icheck.min.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script>
+            $(function () {
+                "use strict";
+                $('.datepicker').datepicker({
+                    startDate: '0',
+                    autoclose: true
+                });
+                $('.clockpicker').clockpicker({
+                    placement: 'bottom',
+                    align: 'left',
+                    autoclose: true,
+                    'default': 'now'
+                });
+            });
+        </script>
+    {% endblock  %}
+{% endblock %}

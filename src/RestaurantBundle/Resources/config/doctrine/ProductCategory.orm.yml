@@ -1,0 +1,33 @@
+RestaurantBundle\Entity\ProductCategory:
+    type: entity
+    
+    manyToMany:
+        products:
+            targetEntity: Product
+            mappedBy: productCategories
+            cascade: ["persist", "merge"]
+            
+    table: null
+    repositoryClass: RestaurantBundle\Repository\ProductCategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        description:
+            type: text
+            nullable: true
+        created:
+            type: datetime
+            unique: true
+        updated:
+            type: datetime
+            unique: true
+            nullable: true
+    lifecycleCallbacks: {  }

@@ -1,0 +1,47 @@
+RestaurantBundle\Entity\Menu:
+    type: entity
+    
+    #lorsque l'on supprime un menu, on supprime les images liées (attribut cascade remove)
+    oneToMany:
+        images:
+            targetEntity: ImageMenu
+            mappedBy: image
+            cascade: ["persist", "remove", "merge"]
+          
+    #Lorsque l'on supprime un menu, on ne supprime pas les produits liés
+    manyToMany:
+        products:
+            targetEntity: Product
+            cascade: ["persist", "merge"]
+            
+    table: null
+    repositoryClass: RestaurantBundle\Repository\MenuRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        message:
+            type: text
+        dateStart:
+            type: datetime
+        dateEnd:
+            type: datetime
+        price:
+            type: string
+            length: 255
+            nullable: true
+        takeAway:
+            type: boolean
+        created:
+            type: datetime
+            unique: true
+        updated:
+            type: datetime
+            unique: true
+    lifecycleCallbacks: {  }

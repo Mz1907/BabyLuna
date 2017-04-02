@@ -1,0 +1,29 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    {% trans_default_domain 'FOSUserBundle' %}
+    <!--==============page header============-->
+    <div class="page-breadcrumb" data-stellar-background-ratio="0.5">
+        <div class="container text-center">
+            <h1>R&eacute;initialiser le mot de passe</h1>
+        </div>
+    </div>
+    <!--==============end page header============-->
+    <div class="overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="space-80"></div>
+                    <h3 class="margin-b-20 text-uppercase">R&eacute;initialiser le mot de passe</h3>
+                    <p>
+                        {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+                    </p>
+                    <div class="space-80"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

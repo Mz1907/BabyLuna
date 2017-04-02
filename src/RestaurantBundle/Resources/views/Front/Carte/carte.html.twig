@@ -1,0 +1,138 @@
+{% extends '::base.html.twig' %}
+{% block title %}Broadway-Waterloo: la carte{% endblock %}
+{% block stylesheets %}
+    {% stylesheets 
+        'bundles/restaurant/bootstrap/css/bootstrap.min.css' filter='cssrewrite'
+        'bundles/restaurant/ionicons/css/ionicons.min.css'
+        'bundles/restaurant/flexslider/flexslider.css'
+        'bundles/restaurant/jasny-bootstrap/css/jasny-bootstrap.min.css'
+        'bundles/restaurant/revolution/css/settings.css'
+        'bundles/restaurant/revolution/css/layers.css'
+        'bundles/restaurant/revolution/css/navigation.css'
+        'bundles/restaurant/css/style.css'
+        'bundles/restaurant/css/custom-menu.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+{% block body %}
+    {# {{dump(sortedCat)}} #}
+    <!--pre-loader-->
+    <div id="preloader"></div>
+    <!--pre-loader-->
+
+    <!--===============main navigation + top bar==========================-->
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <!--===============end main navigation + top bar =====================-->
+
+    <!--==============page header============-->
+    <div class="page-breadcrumb" data-stellar-background-ratio="0.5">
+        <div class="container text-center">
+            <h1>Notre carte</h1>
+        </div>
+    </div>
+    <!--==============end page header============-->
+    <div class="space-80"></div>
+    <div class="container">
+        <div class="row">
+            {% for category in categoriesAvailable %}
+                <div class="text-center">
+                    <h2 class="col-sm-12 margin-b-20">{{category.name}}</h2>
+                    <p class="divider-line col-sm-12">{{category.description}}</p>
+                </div>
+                {% for product in category.products %}
+                    <div class="col-sm-12 margin-b-40 menu-item">
+                        <div class="menu-box clearfix ">
+                            <div class="menu-content">
+                                <h4><a href="{{path('restaurant_product_single', {'slug': product.slug })}}">{{product.name}}</a> <span>{{product.price}}&euro;</span></h4>
+                                <p>{{product.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %} <!--end col-->
+        </div> 
+
+        {# les catégorie du produit doivent être mis dans la classe de la div
+            j'assignes ces catégories à une variable pour plus de facilités 
+        #}
+        {#
+        <div class="row menu-filter-items">
+            {% for product in productsAvailable %}
+                {% set classCategory = '' %}
+                {% for cat in product.productCategories %}
+                    {%  set classCategory = classCategory ~ ' ' ~ cat.name %}                                      
+                {% endfor %}
+                <div class=" {{classCategory}} col-sm-4 margin-b-30 menu-item">
+                    <div class="menu-box clearfix ">
+                        <div class="thumb">
+                            <!-- <img src="assets/images/img-5.jpg" width="70" alt=""> -->
+                            <img src="{{ asset("productsImages/") ~ product.filename  }} " width="70" alt="{{ product.filename }}" />
+
+                        </div>
+                        <div class="menu-content">
+                            <h4><a href="#">{{product.name}}</a> <span></span></h4>
+                            <p>{{product.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} <!--end col-->
+        </div>
+        #}
+    </div>
+    <div class="space-50"></div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    <!--back to top-->
+    <a href="#" class="scrollToTop"><i class="ion-android-arrow-up"></i></a>
+    <!--back to top end-->
+    {% block javascript %}
+        {% javascripts
+
+        'bundles/restaurant/jquery/dist/jquery.min.js'
+        'bundles/restaurant/js/jquery.easing.min.js'
+        'bundles/restaurant/bootstrap/js/bootstrap.min.js'
+        'bundles/restaurant/flexslider/jquery.flexslider-min.js'
+        'bundles/restaurant/js/jquery.stellar.min.js'
+        'bundles/restaurant/js/jquery.sticky.js'
+        'bundles/restaurant/js/jquery.countdown.min.js'
+        'bundles/restaurant/jasny-bootstrap/js/jasny-bootstrap.min.js'
+        'bundles/restaurant/js/bootstrap-hover-dropdown.min.js'
+        'bundles/restaurant/js/template-custom.js'
+        'bundles/restaurant/js/isotope.pkgd.min.js'
+        'bundles/restaurant/js/imagesloaded.pkgd.min.js'
+
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <script>
+            $(document).ready(function () {
+                if ($('.menu-filter-items').length) {
+                    var $galleryFilter = $('.menu-filter-items').isotope({
+                        itemSelector: '.menu-item',
+                        masonry: {
+                            columnWidth: '.menu-item'
+                        }
+                    });
+                    $('.menu-filter-list').on('click', 'li', function () {
+                        var filterValue = $(this).attr('data-filter');
+                        $('.menu-filter-list').find('.is-checked').removeClass('is-checked');
+                        $(this).addClass('is-checked');
+                        $galleryFilter.isotope({filter: filterValue});
+                    });
+
+                    $galleryFilter.imagesLoaded().progress(function () {
+                        $galleryFilter.isotope('layout');
+                    });
+                }
+            });
+        </script>
+    {% endblock  %}
+
+{% endblock %}

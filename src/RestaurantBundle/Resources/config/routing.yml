@@ -1,0 +1,38 @@
+restaurant_homepage:
+    path:     /
+    defaults: { _controller: RestaurantBundle:Default:index }
+
+restaurant_carte:
+    path:     /carte/
+    defaults: { _controller: RestaurantBundle:Carte:showCarte }
+    
+restaurant_product_single:
+    path: /produit/{slug}
+    defaults: {_controller: RestaurantBundle:ProductSingle:showProductSingle }
+
+test:
+    path:     /test
+    defaults: { _controller: RestaurantBundle:Default:index }
+    
+fixtures:
+    path: /fixture/
+    defaults: { _controller: RestaurantBundle:Default:index }
+
+
+facebook_last_events:
+    path: /facebookEvents/last/
+    defaults: { _controller: RestaurantBundle:FacebookController\FacebookEvent:lastEvents }
+    
+    
+
+#formulaire de réservation
+reservation_form:
+    path: /reservation/
+    defaults: { _controller: RestaurantBundle:ReservationController\Reservation:showForm }
+
+#formulaire de contact
+contact_form:
+    path: /contact/
+    defaults: { _controller: RestaurantBundle:ContactController\Contact:showForm }
+    
+

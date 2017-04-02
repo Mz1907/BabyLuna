@@ -1,0 +1,14 @@
+        <h3 style="text-decoration: underline;">Nouvelle réservation reçue:</h3>
+        <p>Date de la réservation: {{ dateReservation | localizeddate('medium', 'medium', app.request.locale ) }}</p>
+        
+        {% if countGuest==11 %}
+            {% set countGuest='Plus de 10 personnes' %}
+        {% endif %}
+        <p>Nombre de personnes prévues: {{countGuest}}</p>
+        <p>Nom de contact: {{userName}}</p>
+        <p>N° de téléphone de contact: {{userPhone}}</p>
+        {% if userMail is defined %}
+            <p>E-mail de contact: {{userMail}}</p>
+        {% endif %}
+        <p>Pour voir la réservation cliquez ici</p>
+        

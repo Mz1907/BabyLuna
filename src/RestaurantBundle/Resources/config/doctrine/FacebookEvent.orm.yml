@@ -1,0 +1,32 @@
+RestaurantBundle\Entity\FacebookEvent:
+    type: entity
+    table: null
+    repositoryClass: RestaurantBundle\Repository\FacebookEventRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+            nullable: true
+        dateStart:
+            type: datetime
+            nullable: false
+        dateEnd:
+            type: datetime
+            nullable: false
+        facebookId:
+            type: string
+            length: 255
+            unique: true
+        cover:
+            string: 255
+            unique: true
+            nullable: true
+    lifecycleCallbacks: {  }

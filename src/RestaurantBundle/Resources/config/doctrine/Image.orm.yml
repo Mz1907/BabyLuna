@@ -1,0 +1,40 @@
+RestaurantBundle\Entity\Image:
+    type: entity
+    
+    manyToOne:
+        product:
+            targetEntity: Product
+            inversedBy: images
+            cascade: ["persist", "merge"]
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+        
+    table: null
+    
+    repositoryClass: RestaurantBundle\Repository\ImageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        alt:
+            type: string
+            length: 255
+            unique: true
+        filename:
+            type: string
+            length: 255
+            unique: false
+            nullable: true
+        created:
+            type: datetime
+        updated:
+            type: datetime
+            nullable: true
+            
+    lifecycleCallbacks:
+        prePersist:   [ lifecycleFileUpload ]
+        preUpdate:    [ lifecycleFileUpload ]
